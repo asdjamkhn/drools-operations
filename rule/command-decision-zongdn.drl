@@ -1,0 +1,18 @@
+import com.example.drools_practise.dto.Request
+
+rule "HandleRawSub"
+    when
+        request : Request( getMethodName() == "HandleRawSub" );
+    then
+        request.setSendSms(true);
+		request.setMethodName("parentSubRaw");
+		request.setSubMode("SMS");
+end;
+
+rule "Help"
+    when
+        request : Request( getMethodName() == "Help" );
+    then
+        request.setSendSms(true);
+		request.setMethodName("parentHelp");
+end;
